@@ -1,93 +1,119 @@
+%RECURSION
 /*
+1)For starting input,output will be known to us (base-condition)
 
-Constant
--->numbers
--->atoms
-
---->Type1 (letter + special chars i.e :=,:-,)
---->Type2 (letters+integer)
-
-Integers
-|
-|--> (-16383 to 16383 (16bit))
-
-Structure(compound of multiple objects)
---> def (collection of objects known as strucutre)
---> usage(less code reptition,less ambiguity)
+In prolog it is satisfied by the given fact.
 
 
+2) A prolog function or program must call itself either directly or
+indirectly
+*/
 
-[Structure Name] == Functor in prolog language & input as Arguments
-date(dd,mm,yyyy) <-- date is Functor & input as Arguments
+
+female(dania).
+
+male(salman).
+male(jim).
+male(peter).
+
+parent(salman,dania).
+parent(peter,jim).
+parent(jack,jim).
+parent(bob,peter).
+
+
+gen(X,Z):- parent(X,Z).
+gen(X,Z):- parent(X,Y), gen(Y,Z).
+
+
+%Q1 (lab manual)
+f(1,one).
+f(s(1),two).
+f(s(s(1)),three).
+f(s(s(s(X))),N):- f(X,N).
+
+%answers
+/*
+?-  f(s(1),A).
+A = two.
+
+?- f(s(s(1)),two).
+false.
+
+?- f(s(s(s(s(s(s(1)))))),C).
+C = one.
+
+?- f(D,three).
+D = s(s(1)).
 
 
 */
 
+on_route(rome).
+on_route(Place):- move(Place,Method,NewPlace),on_route(NewPlace).
 
-owns(john,book(abcbook,author(xyz,abc))).
-owns(marry,book(dcBook,author(zaryan,xxs))).
-
-
-
-/*
-?owns(john,book(abcbook,author(X,Y),Z))
+move(home,taxi,halifax).
+move(halifax,train,gatwick).
+move(gatwick,plane,rome).
 
 
-*/
-
-
-%single entities shouldn't defined as strucutre
-course(103783,day(saturday,time(8:40,am,10:15,am)),course(137311,instructor(zaryab))).
+%q3
+translate(Number,Word):-Number=1,Word=one,!.
+translate(Number,Word):-Number=2,Word=two,!.
+translate(Number,Word):-Number=3,Word=three.
 
 
 /*
-X = code
-Y = teacher
-*/
 
-%Find instructor only
-find_instructor(X,Y):- course(X,_,course(_,instructor(Y))).
+=== LISTS ====
 
+Prolog list is a kind of data strucutre which contains head and tail.
+Head is usually a first element of a list
 
+L = [1,3,2,4]
+head = 1
+tail = 3,2,4
 
-%Find instructor with structure
-find_inst_struct(X,Y):- course(X,_,Y).
-
-
-
-
-/*
- *
- *               ===PROLOG MATCHING===
- *
-Question) if S and T are constant S = T match are as follows
+L_L = [[1,2],3,4,5]
+head = [1,2]
+tail = 3,4,5
 
 
-i) if S and T both are constant S=T if both are same objects.
-ii) if S is a variable and T is anything T = S (viceversa)
+L = [4]
+head = 4
+tail = null
 
-iii)if S and T are structures S and T should have same functor name. All
-their corresponding arguments & compoenents are have to equal & matched.
-*/
+L = []
+head = null
+tail = null
 
 
-% ==QUERIES==
+==== SEPARATING HEAD AND TAIL ====
 
-%? date(1,may,2018)=date(Day,may,2018). Outputs Day=1
-/*? date(D1,M,1983)=date(D,may,Y1). Outputs
 
-D1=D.
-M=may.
-Y1=1983.
-*/
+?- [1,2,3,4] = [H | T]
+|    .
+H = 1,
+T = [2, 3, 4].
 
-/*
+?-
 
-1 ?- date(D,M,1983) = date(D1,may,Y1), date(D,M,1983) = date(15,M,Y).
-D = D1, D1 = 15,
-M = may,
-Y1 = Y, Y = 1983.
+?- [1,2,3,4] = [HEAD | TAIL]
+|    .
+HEAD = 1,
+TAIL = [2, 3, 4].
 
+
+=== FIND LIST ===
+A) LENGTH
+B) SEARCHING
+C) SUM
+D) SWAPING
+E) CONCATENATION / APPEND (PROLOG KA HAY)
+F) REVERSE
+G) MAX-ITEM
+H) SORT
+I) SHIFT N+x
 */
 
 
