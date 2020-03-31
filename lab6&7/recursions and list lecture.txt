@@ -1,0 +1,214 @@
+Recurison
+
+
+1) Base Case ya Initial Condition 
+2)Recursive Call
+
+
+factorial 
+
+
+3! = 3x2x1
+n!=n*(n-1)!
+0!=1
+
+If the number is negative so 
+
+1) condition Number is greater than Zero.
+2) Number Input abs(-N) =+N
+3) N*(-1)
+
+
+
+factorial(0,1). // Base Condition
+factorial(N,F):-N>0,N1 is N-1,factorial(N1,F1),
+F is N*F1.
+
+?factorial(3,6)
+F=6
+
+factorial (0,1) 3=0 (false)
+factorial(N=3,F=?):-3>0 (true),N1 = 2 is 3-1,factorial(2,F1=?).
+F=6 is 3*F1=2
+
+factorial (0,1) 2=0 (false)
+factorial(N=2,F=?):-2>0 (true),N1 = 1is 2-1,factorial(1,F1=?).
+F=2 is 2*F1=1
+
+
+factorial (0,1) 1=0 (false)
+factorial(N=1,F=?):-1>0 (true),N1 = 0 is 1-1,factorial(0,F1=?).
+F=1 is 1*F1=1
+
+
+factorial (0,1) 0=0 (true)
+factorial(N=0,F=1):-F1=1
+
+AI-LAB Wednesday 8:40 to 11:40 Class code l6sqmln
+
+
+LISTS WITH RECURSION
+
+List operation
+
+1) Sum
+2) Size
+3) Shift
+4) Searching
+Etc
+
+Size of A List
+
+
+L=[1,2,3,4] Size=4
+
+Base Condition
+
+Till the List (Head and Tail) Become Blank L=[],Size=0,
+
+Rescurive Condition/Call
+
+Counter Required 
++1 increment dummy value start=0,1
+Head to Tail Movement
+Varibale for storing Updated Counting Variable.
+1=C
+C=C+1=1+1,C=2
+
+size([],0).//Base Condition
+size([_|T],N):-size(T,N1),N is N1+1.
+
+
+L=[1,2,3,4] Size=4
+size([],0) (false)
+size([_ = 1|T=[2,3,4],N=?):-size(T=[2,3,4],N1=?),N is 3+1.
+N=4
+
+L=[2,3,4]
+size([],0) (false)
+size([_ = 2|T=[3,4],N=?):-size(T=[3,4],N1=?),N is 2+1.
+N1=3
+L=[3,4]
+
+size([],0) (false)
+size([_ = 3|T=[4],N=?):-size(T=[4],N1=?),N is 1+1.
+N1=2
+
+L=[4]
+
+size([],0) (false)
+size([_ = 4|T=[],N=?):-size(T=[],N1=?),N is 0+1.
+N1=1
+L=[]
+size([],0) (true)
+N1=0
+
+
+Sum
+L=[1,2,3],Sum=6
+
+
+Base Condition
+
+Till the List (Head and Tail) Become Blank L=[],Sum=0,
+
+Rescurive Condition/Call
+
+Counter Required 
++ H increment head value
+Head to Tail Movement
+Varibale for storing Updated Counting Variable.
+1=C
+C=C+H=1+H,
+
+sum([],0).//Base Condition
+sum([H|T],N):-sum(T,N1),N is N1+H.
+
+L=[1,2,3]
+
+sum([],0) false
+sum([H=1|T=[2,3],N=?):-sum(T=[2,3] ,N1=?),N is 5+1.
+n=6
+
+L=[2,3]
+sum([],0) false
+sum([H=2|T=[3],N=?):-sum(T=[3] ,N1=?),N is 3+2.
+N1=5
+
+L=[3]
+sum([],0) false
+sum([H=3|T=[],N=?):-sum(T=[] ,N1=?),N is 0+3.
+N1=3
+L=[]
+sum([],0) true
+N1=0
+
+DELETE A ITEM FROM A LIST
+
+
+[4,2,3,5] DEL(4) [1,2,3,5]
+
+BASE CASE
+
+IF THE ELEMENT WHICH USER WANT TO DELETE IS PRESENT ON THE HEAD OF THE LIST
+cONDITION stop AND RETURN THE REMAINING TAIL OR LIST.
+
+del(X,[X|T],T).
+del(X,[Y|T],[Y|T1]):-del(X,T,T1).
+
+[1,2,3,4,5] 
+delete(4)
+
+del(X=4,[X=1|T=[2,3,4,5],T=?). 4=1 (false)
+del(X=4,[Y=1|T=[2,3,4,5]],[Y=1|T1=?]):-del(4,T=[2,3,4,5],T1=[1]).
+
+[5] 
+del(X=4,[X=4|T=[5],T=?). 4=4 (true)
+del(X=4,[Y=5|T=[5]],[Y=1,2,3|T1=?]):-del(4,T=[4,5],T1=[1,2,3,5]).
+
+
+ 1 week assignment pafkiet lms word file
+
+trace mode and paper working screen short
+
+reverse
+max_item
+swap
+sorted yes,no
+list first three item delete
+shift ( > 6)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
