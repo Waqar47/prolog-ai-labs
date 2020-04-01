@@ -1,0 +1,44 @@
+:- op(500,xfx,'is_parent_of').
+a is_parent_of b.
+a is_parent_of c.
+a is_parent_of d.
+b is_parent_of e.
+b is_parent_of f.
+c is_parent_of g.
+c is_parent_of h.
+c is_parent_of i.
+d is_parent_of j.
+e is_parent_of k.
+f is_parent_of l.
+f is_parent_of m.
+h is_parent_of n.
+i is_parent_of o.
+i is_parent_of p.
+j is_parent_of q.
+j is_parent_of r.
+j is_parent_of s.
+m is_parent_of t.
+n is_parent_of u.
+n is_parent_of v.
+:-op(500,xfx,'is_sibling_of').
+X is_sibling_of Y :- Z is_parent_of X,
+    Z is_parent_of Y,
+    X\==Y.
+
+:-op(500,xfx,'is_at_same_level').
+X is_at_same_level X.
+X is_at_same_level Y:- W is_parent_of X,
+    Z is_parent_of Y,
+    W is_at_same_level Z.
+
+path(a).
+path(Node):- X is_parent_of Node,
+    path(X),
+    write(X),
+    write('-').
+
+locate(Node):-path(Node),
+    write(Node),
+    nl.
+
+
